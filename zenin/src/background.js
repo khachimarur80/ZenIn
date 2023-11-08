@@ -17,7 +17,7 @@ async function createWindow(devPath) {
   let win = new BrowserWindow({
     width: 800,
     height: 600,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#121212',
     titleBarStyle: 'hidden',
     frame: false,
     hasShadow: false,

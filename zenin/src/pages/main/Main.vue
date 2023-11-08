@@ -9,40 +9,40 @@
       <div id="main">
         <div class="vertical-menu pt-2">
           <v-btn icon small>
-            <v-icon>
+            <v-icon size="20" @click="view=0">
               mdi-inbox
             </v-icon>
           </v-btn>
-          <v-btn icon small>
-            <v-icon>
+          <v-btn icon small @click="view=1">
+            <v-icon size="20">
               mdi-checkbox-marked-circle-plus-outline
             </v-icon>
           </v-btn>
-          <v-divider color="#eee" class="my-2"></v-divider>
-          <v-btn icon small>
-            <v-icon>
+          <v-divider color="#333" class="my-2"></v-divider>
+          <v-btn icon small @click="view=2">
+            <v-icon size="20">
               mdi-flag-outline
             </v-icon>
           </v-btn>
-          <v-btn icon small>
-            <v-icon>
+          <v-btn icon small @click="view=3">
+            <v-icon size="20">
               mdi-update
             </v-icon>
           </v-btn>
-          <v-btn icon small>
-            <v-icon>
+          <v-btn icon small @click="view=4">
+            <v-icon size="20">
               mdi-alarm
             </v-icon>
           </v-btn>
-          <v-divider color="#eee" class="my-2"></v-divider>
-          <v-btn icon small>
-            <v-icon>
+          <v-divider color="#333" class="my-2"></v-divider>
+          <v-btn icon small @click="view=5">
+            <v-icon size="20">
               mdi-table
             </v-icon>
           </v-btn>
-          <v-divider color="#eee" class="my-2"></v-divider>
+          <v-divider color="#333" class="my-2"></v-divider>
           <v-btn icon small>
-            <v-icon>
+            <v-icon size="20">
               mdi-chart-line
             </v-icon>
           </v-btn>
@@ -53,23 +53,36 @@
             </v-icon>
           </v-btn>
         </div>
-        <Schedule/>
+        <Inbox v-if="view==0"/>
+        <Logs v-if="view==1"/>
+        <Objectives v-if="view==3"/>
+        <Campaigns v-if="view==2"/>
+        <Schedules v-if="view==4"/>
       </div>
     </v-main>
   </v-app>
 </template>
 <script>
-import Schedule from '@/components/Schedule.vue'
+
+import Inbox from '@/components/Inbox.vue'
+import Logs from '@/components/Logs.vue'
+import Objectives from '@/components/Objectives.vue'
+import Campaigns from '@/components/Campaigns.vue'
+import Schedules from '@/components/Schedules.vue'
 
 export default {
   name: 'App',
 
   components: {
-    Schedule
+    Inbox,
+    Logs,
+    Objectives,
+    Campaigns,
+    Schedules,
   },
 
   data: () => ({
-    //
+    view: 'campaigns',
   }),
 };
 </script>
@@ -79,7 +92,7 @@ body, html {
 }
 #title-bar {
   height: 30px;
-  border-bottom: 1px solid var(--v-secondary-base);
+  background: #090909;
   user-select: none;
   -webkit-app-region: drag;
 }
@@ -87,10 +100,12 @@ body, html {
   padding: 5px;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid #ccc;
+  background: #101010;
+  width: 40px;
 }
 #main {
   height: calc(100vh - 30px);
   display: flex;
+  width: 100h;
 }
 </style>
